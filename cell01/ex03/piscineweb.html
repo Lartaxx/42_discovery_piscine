@@ -8,8 +8,11 @@
 </head>
 <body>
     <h1>Piscine Web</h1>
+    <p class="text">Programmers while reviewving the codes</p>
     <div class="images">
-        <img src="https://42.fr/wp-content/uploads/2021/08/42.jpg" alt="Première image">
+        <a href="https://www.youtube.com/watch?v=INscMGmhmX4" target="_blank">
+            <img src="https://42.fr/wp-content/uploads/2021/08/42.jpg" alt="Première image">
+        </a>
         <img src="https://images.squarespace-cdn.com/content/v1/513a14c4e4b0f86e34be5d67/1365996279271-70J9WBA7PJPWVKPAPBD0/42-movie.jpg" alt="Deuxième image">
     </div>
     <style>
@@ -17,14 +20,15 @@
             text-align: center;
         }
         img {
-            height: 200px;
-            text-align: center;
+            width: 300px;
+            height: 300px;
         }
         .images {
-            text-align: center !important;
-            margin-left: auto;
-            margin-right: auto;
-            display: inline-block;
+            display: flex;
+            justify-content: center;
+        }
+        .text {
+            margin-left: 50%;
         }
     </style>
 </body>

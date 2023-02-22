@@ -1,0 +1,13 @@
+table {
+    background-color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+}
+.bg-green {
+    background-color: #c3c77e;
+}
+.bg-pink {
+    background-color: pink;
+}
