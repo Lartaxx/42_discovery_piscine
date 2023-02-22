@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="baloon" id="baloon"></div>
+    <style>
+        .baloon {
+            height: 200px;
+            width: 200px;
+            border-radius: 100%;
+        }
+    </style>
+    <script>
+        let baloon = document.getElementById("baloon");
+        baloon.style.backgroundColor = "red";
+        baloon.addEventListener("click", function() {
+            changeColor(baloon);
+            baloon.style.height = `${baloon.clientHeight + 10}px`;
+            if (baloon.style.height >= "420px") {
+                baloon.style.height = "200px";
+            }
+        });
+
+        baloon.addEventListener("mouseenter", function() {
+            if (!baloon.style.height) return;
+            if (baloon.style.height <= "200px") return;
+            reverseChangeColor(baloon);
+            baloon.style.height = `${baloon.clientHeight - 5}px`;
+        })
+
+        function changeColor(element) {
+            switch (element.style.backgroundColor) {
+                case "red":
+                    element.style.backgroundColor = "green";
+                    break;
+                case "green":
+                    element.style.backgroundColor = "blue";
+                    break;
+                case "blue":
+                    element.style.backgroundColor = "red";
+                    break;
+            }
+        }
+
+        function reverseChangeColor(element) {
+            switch (element.style.backgroundColor) {
+                case "red":
+                    element.style.backgroundColor = "blue";
+                    break;
+                case "green":
+                    element.style.backgroundColor = "red";
+                    break;
+                case "blue":
+                    element.style.backgroundColor = "green";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

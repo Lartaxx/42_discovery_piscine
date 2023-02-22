@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="left" placeholder="Nombre de gauche">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="right" placeholder="Nombre de droite">
+        <input type="submit" value="Try me!" id="submit">
+    </div>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setInterval(() => {
+                alert("Please, use me...")
+            }, 30000)
+            let submit = document.getElementById("submit");
+            submit.addEventListener("click", function() {
+                const left = document.getElementById("left").value;
+                const right = document.getElementById("right").value;
+                const operator = document.getElementById("operator").value;
+                if (left < 0 || right < 0 ) {
+                    return alert("Error :(");
+                }
+                if ((operator === "/" || operator === "%") && right === "0") {
+                    alert("It’s over 9000!");
+                    return console.log("It’s over 9000!");
+                }
+                alert(eval(`${left} ${operator} ${right}`));
+                console.log(eval(`${left} ${operator} ${right}`));
+            });
+        });
+    </script>
+</body>
+</html>
