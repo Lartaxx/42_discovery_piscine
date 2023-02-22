@@ -1,6 +1,32 @@
+* {
+    margin: 0px;
+    padding: 0px;
+  }
+
 .container {
-    width: 100%;
-    height: 100%;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    background-image: url("https://gunnars.fr/wp-content/uploads/202579.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://www.ladn.eu/wp-content/uploads/2019/03/GettyImages-916307726-2.jpg");
+}
+
+.text {
+    color: white;
+}
+
+.p2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height:1000px;
+    background-color:black;
+    color:white;
+    padding: 25px 25px 25px 25px;
 }
