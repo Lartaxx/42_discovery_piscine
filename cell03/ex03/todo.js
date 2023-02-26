@@ -9,14 +9,14 @@ window.addEventListener("DOMContentLoaded", function() {
         setItem("counter", 0);
     }
     tbVal = load_todo().reverse();
-
+    tbKey = load_todo_key().reverse();
     // Load tasks
     Object.entries(tbVal).forEach(([key, value]) => {
         const div = document.createElement("div");
         div.innerHTML = value;
         div.addEventListener("click", function() {
             if (confirm("Voulez-vous supprimer cette tâche ?")) {
-                removeItem(localStorage.key(i));
+                removeItem(tbKey[key]);
                 location.reload();
             }
         });
@@ -86,6 +86,16 @@ function load_todo(){
             id = localStorage.key(i).split('_');
             val = localStorage.getItem(localStorage.key(i))
             tb[id[1]] = val;
+        }
+    }
+    return tb;
+}
+function load_todo_key(){
+    let tb = [];
+    for (let i = 0; i < length(); i++) {
+        if (localStorage.key(i).startsWith("todo_")) {
+            id = localStorage.key(i).split('_');
+            tb[id[1]] = localStorage.key(i);
         }
     }
     return tb;
