@@ -8,21 +8,20 @@ window.addEventListener("DOMContentLoaded", function() {
     if (!getItem("counter")) {
         setItem("counter", 0);
     }
+    tbVal = load_todo().reverse();
 
     // Load tasks
-    for (let i = 0; i < length(); i++) {
-        if (localStorage.key(i).startsWith("todo_")) {
-            const div = document.createElement("div");
-            div.innerHTML = getItem(localStorage.key(i));
-            div.addEventListener("click", function() {
-                if (confirm("Voulez-vous supprimer cette tâche ?")) {
-                    removeItem(localStorage.key(i));
-                    location.reload();
-                }
-            });
-            ft_list.insertBefore(div, ft_list.childNodes[0]);
-        }
-    }
+    Object.entries(tbVal).forEach(([key, value]) => {
+        const div = document.createElement("div");
+        div.innerHTML = value;
+        div.addEventListener("click", function() {
+            if (confirm("Voulez-vous supprimer cette tâche ?")) {
+                removeItem(localStorage.key(i));
+                location.reload();
+            }
+        });
+        ft_list.insertBefore(div, ft_list.childNodes[`todo_${key}`]);
+    })
 
     // Btn_new click event
     btn_new.addEventListener("click", function() {
@@ -77,4 +76,17 @@ function lengthByStartsWith(name) {
         }
     }
     return count;
+}
+
+
+function load_todo(){
+    let tb = [];
+    for (let i = 0; i < length(); i++) {
+        if (localStorage.key(i).startsWith("todo_")) {
+            id = localStorage.key(i).split('_');
+            val = localStorage.getItem(localStorage.key(i))
+            tb[id[1]] = val;
+        }
+    }
+    return tb;
 }
