@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="left" placeholder="Nombre de gauche">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="right" placeholder="Nombre de droite">
+        <input type="submit" value="Try me!" id="submit">
+    </div>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-items: center;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            setInterval(() => {
+                alert("Please, use me...")
+            }, 30000);
+
+            $("#submit").off("click").on("click", function() {
+                const left = $("#left").val();
+                const right = $("#right").val();
+                const operator = $("#operator").val();
+                if (left < 0 || right < 0) {
+                    return alert("Error :(");
+                }
+                if ((operator === "/" || operator === "%") && right === "0") {
+                    alert("It’s over 9000!");
+                    return console.log("It’s over 9000!");
+                }
+                alert(eval(`${left} ${operator} ${right}`));
+                console.log(eval(`${left} ${operator} ${right}`));
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="baloon" id="baloon"></div>
+    <style>
+        .baloon {
+            height: 200px;
+            width: 200px;
+            border-radius: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script>
+        $("#baloon").css("background-color", "red");
+
+        $("#baloon").off("click").on("click", function() {
+            changeColor();
+            $("#baloon").css("height", "+=10px");
+            if ($("#baloon").height() >= 420) {
+                $("#baloon").height(200);
+            }
+        });
+        $("#baloon").mouseenter(function() {
+            if (!$("#baloon").height()) return;
+            if ($("#baloon").height() <= 200) return;
+            reverseChangeColor();
+            $("#baloon").css("height", "-=5px");
+        });
+
+        function changeColor() {
+            switch ($("#baloon").css("background-color")) {
+                case "rgb(255, 0, 0)":
+                    $("#baloon").css("background-color", "green");
+                    break;
+                case "rgb(0, 128, 0)":
+                    $("#baloon").css("background-color", "blue");
+                    break;
+                case "rgb(0, 0, 255)":
+                    $("#baloon").css("background-color", "red");
+                    break;
+            }
+        }
+
+        function reverseChangeColor() {
+            switch ($("#baloon").css("background-color")) {
+                case "rgb(255, 0, 0)":
+                    $("#baloon").css("background-color", "blue");
+                    break;
+                case "rgb(0, 128, 0)":
+                    $("#baloon").css("background-color", "red");
+                    break;
+                case "rgb(0, 0, 255)":
+                    $("#baloon").css("background-color", "green");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
